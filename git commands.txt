@@ -1,0 +1,54 @@
+ 
+ --------------------- <*** commonly used ***> ----------------------
+ > git init
+ > git status
+ > git add . or git  -A  (add to working directry)
+ > git commit -m "message"  (commit in local git)
+ > git log
+ > git remote add origin https://github.com/airanil/2021-git.git    (add remote origin )
+ > git push  (push to remote github )
+ 
+		git push <remote> <branch-name>                           (commit to remote)
+		git push --set-upstream <remote> <name-of-your-branch>    (commit to remote if branch is newly created)
+		-- or  ----
+		git push -u origin <branch_name>
+ 
+ ----------------  <*** clone and pull ***> -----------------
+ 
+ > git clone  https://github.com/airanil/2021-git.git  (clone remote repo)
+ > git pull https://github.com/airanil/2021-git.git    (update local repo with remote)
+ 
+ 
+ -------------------- <*** remove file ***> ----------------
+ > git rm <fileName>
+ -------------------   < Branch >   ---------------------
+ > git branch <branch-name>             (create branch )
+ > git branch or git branch --list      (branch list)
+ > git branch -d <branch-name>          (delete branch) 
+ 
+ --------------------- <*** checkout ***> ---------------------
+ 
+ > git checkout <name-of-your-branch>   (switching from one branch to other for working)
+ > git checkout -b <name-of-your-branch> (create and swich to new branch at same time)
+ 
+ 
+ ----------------------  <*** revert ***>     ----------------
+ > git log --online     (online commit history of my master branch)
+ > git revert <3321844> (revert with history id)  (After this, you will see a screen for confirmation - just press shift + q to exit:)
+												=> The Git revert command will undo the given commit,
+												   but will create a new commit without deleting the older one:
+ > git log --online
+ 
+ ------------------      <*** mearge branch ***>    ---------------
+ > git checkout dev  					(First you should switch to the dev branch)
+ > git fetch         					(Before merging, you should update your local dev branch)
+ > git merge <branch-name> 				(Finally, you can merge your feature branch into dev:)
+ 
+ ----------------------- <*** resolve conflict ***> -----------
+ 1. git status 
+ 2. open in editor and solve , conflict (which code you want to keep)
+ 3. git commmit -m "conflict solved msg"
+ 
+ 
+ 
+ 
