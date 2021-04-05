@@ -1,0 +1,112 @@
+version: '3'
+
+services:
+  # mysql-standalone:
+  #   image: mysql:5.7
+  #   volumes:
+  #     - shared-database:/var/lib/mysql
+  #   networks:
+  #    mysql-newotk:
+
+  #   environment:     
+  #   - MYSQL_DATABASE=${DB_NAME}
+  #   - MYSQL_ROOT_PASSWORD=${DB_ROOT_PWD}
+  #   - MYSQL_USER= ${DB_USER}
+  #   - MYSQL_PASSWORD=${DB_PWD}
+  #   container_name: mysql-standalone
+
+  springboot-configserver:
+    image : springboot-configserver:1.0
+    volumes:
+      - springboot-volume:/usr/src/
+    networks:
+     springboot-network:  
+    ports : 
+      - 8888:8888
+    build :
+      context : ./configserver/
+      dockerfile: Dockerfile
+    # depends_on:
+    # - mysql-standalone
+    container_name: springboot-configserver
+  
+  springboot-zuulservice:
+    image : springboot-zuulservice:1.0
+    volumes:
+      - springboot-volume:/usr/src/
+    networks:
+     springboot-network:  
+    ports : 
+      - 9005:9002
+    build :
+      context : ./zuulservice/
+      dockerfile: Dockerfile
+    # depends_on:
+    # - mysql-standalone
+    container_name: springboot-zuulservice
+
+  springboot-discoveryserver:
+    image : springboot-discoveryserver:1.0
+    volumes:
+      - springboot-volume:/usr/src/
+    networks:
+     springboot-network:  
+    ports : 
+      - 8761:8761
+    build :
+      context : ./discoveryserver/
+      dockerfile: Dockerfile
+    # depends_on:
+    # - mysql-standalone
+    container_name: springboot-discoveryserver  
+
+  springboot-flightservice:
+    image : springboot-flightservice:1.0
+    volumes:
+      - springboot-volume:/usr/src/
+    networks:
+     springboot-network:  
+    # ports : 
+    #   - 9002:9002
+    build :
+      context : ./flightservice/
+      dockerfile: Dockerfile
+    # depends_on:
+    # - mysql-standalone
+   # container_name: springboot-flightservice     # if we will give container name we can not able to scale it
+
+  springboot-importservice:
+    image : springboot-importservice:1.0
+    volumes:
+      - springboot-volume:/usr/src/
+    networks:
+     springboot-network:  
+    # ports : 
+    #   - 9002:9002
+    build :
+      context : ./import-service/
+      dockerfile: Dockerfile
+    # depends_on:
+    # - mysql-standalone
+    #container_name: springboot-importservice
+
+
+
+networks:
+  # mysql-newotk:
+  #   name: user-network
+  #   driver: bridge
+
+  springboot-network:
+    name: user-network
+    driver: bridge
+    
+volumes:
+  #shared-database:
+    #name: docker-demo_shared-database
+    #external: true
+  springboot-volume:
+    #name: docker-demo_springboot-volume
+    #external: true
+        
+      

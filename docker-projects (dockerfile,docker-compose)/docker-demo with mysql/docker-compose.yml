@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  mysql-standalone:
+    image: mysql:5.7
+    volumes:
+      - shared-database:/var/lib/mysql
+    networks:
+     mysql-newotk:
+
+    environment:     
+    - MYSQL_DATABASE=${DB_NAME}
+    - MYSQL_ROOT_PASSWORD=${DB_ROOT_PWD}
+    - MYSQL_USER= ${DB_USER}
+    - MYSQL_PASSWORD=${DB_PWD}
+    container_name: mysql-standalone
+  
+  springboot-mysql:
+    image : springboot-mysql:1.0
+    volumes:
+      - springboot-volume:/usr/src/
+    networks:
+     springboot-network:  
+    ports : 
+      - 9002:9002
+    build :
+      context : ./
+      dockerfile: Dockerfile
+    depends_on:
+    - mysql-standalone
+    container_name: springboot-mysql
+
+networks:
+  mysql-newotk:
+    name: user-network
+    driver: bridge
+
+  springboot-network:
+    name: user-network
+    driver: bridge
+    
+volumes:
+  shared-database:
+    #name: docker-demo_shared-database
+    #external: true
+  springboot-volume:
+    #name: docker-demo_springboot-volume
+    #external: true
+        
+      
