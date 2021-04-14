@@ -1,0 +1,17 @@
+1. project -sturcture--> project folder structure
+
+
+
+setup:---
+1. install mongoDb(Db->productDB, collection->product)
+2. install nodejs,Reactjs
+3. create mongoDB folder in c-> drive to store all Db related stuffs
+4. ENABLE VERTUALIZATION (WINDOW FEATURES)
+
+
+start project :-
+1. open project and install all dependencies of both project  ( npm install )
+2.start mongodb server , by double clicking startMongoDB.bat file
+3. start both server , 
+     1. shoping-cart(nodeserver) -> node index.js 
+     2. shoping-cart-client-> npm run start
