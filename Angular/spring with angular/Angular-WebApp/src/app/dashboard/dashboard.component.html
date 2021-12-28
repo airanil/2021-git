@@ -1,0 +1,8 @@
+
+<form [formGroup]='requestForm'>
+flight Id: <input formControlName='flightId'/>
+<button (click)="addNewFlight()">Add New Flight</button>
+</form>
+
+<button (click)="getFlightList()">Get Flight List</button>
+<p>{{result}}</p>
