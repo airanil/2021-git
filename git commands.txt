@@ -48,6 +48,8 @@
  1. git status 
  2. open in editor and solve , conflict (which code you want to keep)
  3. git commmit -m "conflict solved msg"
+
+** PAC: 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
  
  
  
