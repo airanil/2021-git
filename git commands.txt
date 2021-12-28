@@ -49,7 +49,8 @@
  2. open in editor and solve , conflict (which code you want to keep)
  3. git commmit -m "conflict solved msg"
 
-** PAC: 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
+** PAC: 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
+create personal tockern-> settings ->developer setting->personal access tocken -> create new tocken
  
  
  
